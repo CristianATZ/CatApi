@@ -1,0 +1,38 @@
+package com.devtorres.details.nav
+
+import androidx.lifecycle.SavedStateHandle
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavType
+import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
+import com.devtorres.details.AnimalDetailScreen
+import com.devtorres.navigation.Screen
+
+const val ANIMAL_ARGS_ID = "animalId"
+
+internal class AnimalDetailArgs(val animalId: String) {
+    constructor(savedStateHandle: SavedStateHandle) :
+            this(
+                checkNotNull(
+                    savedStateHandle[ANIMAL_ARGS_ID]
+                ){ "El argumento $ANIMAL_ARGS_ID no puede ser nulo"} as String
+            )
+    }
+
+fun NavGraphBuilder.animalDetailNavigation(
+    onNavigateUp: () -> Unit
+) {
+    composable(
+        route = Screen.Detail.route,
+        arguments = listOf(
+            navArgument(ANIMAL_ARGS_ID) {
+                type = NavType.StringType
+            }
+        )
+    ) { backStackEntry ->
+        // inicializar viewmodel
+        AnimalDetailScreen(
+            onNavigateUp = onNavigateUp
+        )
+    }
+}

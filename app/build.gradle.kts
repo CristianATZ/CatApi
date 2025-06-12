@@ -44,7 +44,13 @@ android {
 }
 
 dependencies {
+    // core
     implementation(project(":core:designsystem"))
+    implementation(project(":core:navigation"))
+
+    // feature
+    implementation(project(":feature:home"))
+    implementation(project(":feature:details"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -56,6 +62,9 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
+    // navigation
+    implementation(libs.androidx.navigation.compose)
 
     // hilt
     implementation(libs.hilt.android)
