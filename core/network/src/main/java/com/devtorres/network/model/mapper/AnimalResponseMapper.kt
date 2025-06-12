@@ -11,9 +11,9 @@ object AnimalResponseMapper : ResponseMapper<List<Animal>, List<AnimalResponse>>
         return response.map { animal ->
             Animal(
                 id = animal.id,
-                imageUri = animal.uri,
-                breedName = animal.breeds.name,
-                breedOrigin = animal.breeds.origin
+                imageUri = "animal.uri",
+                breedName = animal.breeds[0].name,
+                breedOrigin = animal.breeds[0].origin
             )
         }
     }

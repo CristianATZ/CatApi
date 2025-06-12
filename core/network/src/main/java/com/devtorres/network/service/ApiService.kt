@@ -21,7 +21,7 @@ interface ApiService {
     suspend fun fetchAnimalList(
         @Query("api_key") apiKey: String = "",
         @Query("page") page: Int = 0,
-        @Query("limit") limit: Int = 15,
+        @Query("limit") limit: Int = 10,
         @Query("has_breeds") hasBreeds: Boolean = true,
         @Query("breed_ids") breedIds: String = "",
         @Query("category_ids") categoryIds: String = ""

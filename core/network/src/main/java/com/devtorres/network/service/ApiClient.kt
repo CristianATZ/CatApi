@@ -25,6 +25,6 @@ class ApiClient @Inject constructor(
     companion object {
         const val API_KEY = "live_8NqXIpPNADdRy57Zx8kTKsPIdGbS8TjMtOzDSSEgBcm8nCBlkPj0ibXv23Jd4kOv"
 
-        private const val PAGING_SIZE = 15
+        private const val PAGING_SIZE = 10
     }
 }

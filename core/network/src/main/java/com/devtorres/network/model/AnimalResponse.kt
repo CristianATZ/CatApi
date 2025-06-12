@@ -6,8 +6,8 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class AnimalResponse(
     @SerialName(value = "id")       val id:         String,
-    @SerialName(value = "url")      val uri:        String,
-    @SerialName(value = "breeds")   val breeds:     BreedBasicInfo
+    @SerialName(value = "url")      val url:        String,
+    @SerialName(value = "breeds")   val breeds:     List<BreedBasicInfo>
 )
 
 
