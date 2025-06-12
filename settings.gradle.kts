@@ -21,4 +21,11 @@ dependencyResolutionManagement {
 
 rootProject.name = "CatApi"
 include(":app")
- 
+include(":core:navigation")
+include(":core:model")
+include(":core:network")
+include(":core:designsystem")
+include(":core:data")
+include(":core:utils")
+include(":feature:home")
+include(":feature:details")

@@ -1,4 +1,4 @@
-package com.devtorres.catapi.ui.theme
+package com.devtorres.designsystem.theme
 
 import androidx.compose.ui.graphics.Color
 

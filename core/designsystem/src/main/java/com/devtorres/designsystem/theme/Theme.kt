@@ -1,6 +1,5 @@
-package com.devtorres.catapi.ui.theme
+package com.devtorres.designsystem.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
