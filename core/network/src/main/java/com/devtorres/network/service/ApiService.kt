@@ -1,7 +1,7 @@
 package com.devtorres.network.service
 
-import com.devtorres.network.ApiConstants
 import com.devtorres.network.model.AnimalResponse
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -25,6 +25,6 @@ interface ApiService {
         @Query("has_breeds") hasBreeds: Boolean = true,
         @Query("breed_ids") breedIds: String = "",
         @Query("category_ids") categoryIds: String = ""
-    ) : Result<List<AnimalResponse>>
+    ) : Response<List<AnimalResponse>>
 
 }
