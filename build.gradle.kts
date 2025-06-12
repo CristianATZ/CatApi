@@ -8,4 +8,6 @@ plugins {
     alias(libs.plugins.google.devtools.ksp) apply false
     // hilt
     alias(libs.plugins.dagger.hilt) apply false
+    // serialization
+    alias(libs.plugins.kotlinx.serialization) apply false
 }
