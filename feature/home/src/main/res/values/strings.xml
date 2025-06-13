@@ -3,4 +3,7 @@
     <string name="error_fetching_animals">Algo salio mal...</string>
     <string name="btn_retry">Reintentar</string>
     <string name="btn_load_more">Cargar mas</string>
+    <string name="breeds_filter">Filtro por raza</string>
+    <string name="category_filter">Filtro por categorias</string>
+    <string name="filter_warning">Al seleccionar una raza, se eliminan los filtros de categoría y viceversa. Solo puede elegirse una categoría a la vez, pero múltiples razas pueden seleccionarse simultáneamente.</string>
 </resources>
