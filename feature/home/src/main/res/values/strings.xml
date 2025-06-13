@@ -6,4 +6,6 @@
     <string name="breeds_filter">Filtro por raza</string>
     <string name="category_filter">Filtro por categorias</string>
     <string name="filter_warning">Al seleccionar una raza, se eliminan los filtros de categoría y viceversa. Solo puede elegirse una categoría a la vez, pero múltiples razas pueden seleccionarse simultáneamente.</string>
+    <string name="btn_save">Guardar</string>
+    <string name="information_no_available">Sin informacion</string>
 </resources>

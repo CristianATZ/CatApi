@@ -17,6 +17,7 @@ class ApiClient @Inject constructor(
             apiKey = API_KEY,
             page = page,
             limit = PAGING_SIZE,
+            hasBreeds = categoryIds.isEmpty(),
             breedIds = breedIds,
             categoryIds = categoryIds
         )

@@ -12,9 +12,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.devtorres.common.AsyncImageLoader
+import com.devtorres.home.R
 import com.devtorres.model.Animal
 
 @Composable
@@ -24,7 +26,7 @@ fun AnimalCard(
 ) {
     Card(
         onClick = {
-            onNavigateToAnimalDetail(animal.id)
+            if(animal.breedName != null) onNavigateToAnimalDetail(animal.id)
         },
         shape = MaterialTheme.shapes.medium,
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
@@ -43,18 +45,20 @@ fun AnimalCard(
             modifier = Modifier.padding(12.dp),
             verticalArrangement = Arrangement.spacedBy(6.dp)
         ) {
-            Text(
-                text = animal.breedName,
-                style = MaterialTheme.typography.bodyLarge,
-                fontWeight = FontWeight.Bold
-            )
+            animal.breedName?.let { name ->
+                Text(
+                    text = name,
+                    style = MaterialTheme.typography.bodyLarge,
+                    fontWeight = FontWeight.Bold
+                )
+            }
 
             Badge(
                 containerColor = MaterialTheme.colorScheme.secondary,
                 contentColor = MaterialTheme.colorScheme.onSecondary
             ) {
                 Text(
-                    text = animal.breedOrigin,
+                    text = animal.breedOrigin ?: stringResource(R.string.information_no_available),
                     style = MaterialTheme.typography.labelSmall,
                     modifier = Modifier.padding(4.dp)
                 )

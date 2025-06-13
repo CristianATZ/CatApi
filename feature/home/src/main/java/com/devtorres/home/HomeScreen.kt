@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -27,8 +28,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -93,6 +96,7 @@ fun HomeScreen(
                 Text(
                     text = stringResource(R.string.error_fetching_animals),
                     style = MaterialTheme.typography.titleLarge,
+                    color = MaterialTheme.colorScheme.onBackground,
                     fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center
                 )
@@ -101,7 +105,7 @@ fun HomeScreen(
                     onClick = homeViewModel::fetchNextAnimalPage
                 ) {
                     Text(
-                        text = stringResource(R.string.btn_retry)
+                        text = stringResource(R.string.btn_retry),
                     )
                 }
             }
@@ -115,6 +119,14 @@ fun DrawerContent(
     onSaveFilter: () -> Unit,
     homeViewModel: HomeViewModel
 ) {
+    val currentFilters by homeViewModel.filter.collectAsStateWithLifecycle()
+
+    var newFilters by remember {
+        mutableStateOf(
+            currentFilters
+        )
+    }
+
     val breeds = remember {
         listOf(
             "Abyssinian" to "abys",
@@ -125,7 +137,6 @@ fun DrawerContent(
             "Balinese" to "bali"
         )
     }
-
     val category = remember {
         listOf(
             "Cajas" to "5",
@@ -166,12 +177,18 @@ fun DrawerContent(
             FlowRow(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
             ) {
-                breeds.forEach {  breed ->
+                breeds.forEach { breed ->
                     FilterChip(
-                        selected = false,
-
+                        selected = breed.second in newFilters.breeds,
                         onClick = {
-
+                            newFilters = newFilters.copy(
+                                breeds = if(breed.second in newFilters.breeds) {
+                                    newFilters.breeds - breed.second
+                                } else {
+                                    newFilters.breeds + breed.second
+                                },
+                                category = ""
+                            )
                         },
                         label = {
                             Text(
@@ -196,22 +213,36 @@ fun DrawerContent(
             FlowRow(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
             ) {
-                category.forEach {  breed ->
+                category.forEach {  category ->
                     FilterChip(
-                        selected = false,
-
+                        selected = category.second == newFilters.category,
                         onClick = {
-
+                            newFilters = newFilters.copy(
+                                breeds = emptySet(),
+                                category = if(category.second == newFilters.category) "" else category.second
+                            )
                         },
                         label = {
                             Text(
-                                text = breed.first,
+                                text = category.first,
                                 style = MaterialTheme.typography.labelSmall
                             )
                         }
                     )
                 }
             }
+        }
+
+        Button(
+            onClick = {
+                homeViewModel.updateFilters(newFilters)
+                onSaveFilter()
+            },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = stringResource(R.string.btn_save)
+            )
         }
     }
 }

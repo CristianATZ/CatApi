@@ -56,7 +56,7 @@ class HomeRepositoryImpl @Inject constructor(
                 onError(response.errorBody().toString())
             }
         } catch (e: Exception) {
-            //Log.d("HomeRepositoryImpl", "fetchAnimalList:  error: ${e.message}")
+            Log.d("HomeRepositoryImpl", "fetchAnimalList:  error: ${e.message}")
             onError(e.message)
         }
     }
