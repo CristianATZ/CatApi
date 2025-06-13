@@ -1,6 +1,7 @@
 package com.devtorres.designsystem.components
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.FilterAlt
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -29,7 +30,7 @@ fun CatApiTopAppBar(
                 onClick = onOpenFilterDrawer
             ) {
                 Icon(
-                    imageVector = Icons.Default.Notifications,
+                    imageVector = Icons.Default.FilterAlt,
                     contentDescription = null
                 )
             }
