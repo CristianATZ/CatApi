@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_fetching_animals">Algo salio mal...</string>
+    <string name="btn_retry">Reintentar</string>
+    <string name="btn_load_more">Cargar mas</string>
+</resources>

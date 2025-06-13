@@ -28,9 +28,14 @@ android {
 }
 
 dependencies {
+    // core
     implementation(project(":core:navigation"))
     implementation(project(":core:data"))
     implementation(project(":core:model"))
+    implementation(project(":core:designsystem"))
+
+    // feature
+    implementation(project(":feature:common"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

@@ -28,6 +28,7 @@ class HomeRepositoryImpl @Inject constructor(
         onError: (String?) -> Unit
     ): Flow<List<Animal>> = flow {
         try {
+            onStart()
             Log.d("HomeRepositoryImpl", "fetchAnimalList: page: $page")
             // hacer la peticion
             val response = apiClient.fetchAnimalList(
@@ -44,10 +45,11 @@ class HomeRepositoryImpl @Inject constructor(
 
                 // veriricar con elvis si no es null
                 bodyResponse?.let { animals ->
-                    /*animals.forEach { animal ->
+                    animals.forEach { animal ->
                         Log.d("HomeRepositoryImpl", "fetchAnimalList: ${animal}")
-                    }*/
+                    }
                     emit(animals.asDomain())
+                    onComplete()
                 }
             } else {
                 //Log.d("HomeRepositoryImpl", "fetchAnimalList: ${response.errorBody()}")

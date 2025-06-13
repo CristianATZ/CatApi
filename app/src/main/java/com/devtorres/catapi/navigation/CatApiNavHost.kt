@@ -11,27 +11,24 @@ import com.devtorres.home.nav.homeNavigation
 import com.devtorres.navigation.Screen
 import com.devtorres.navigation.controller.navigateToAnimalDetail
 
-@OptIn(ExperimentalSharedTransitionApi::class)
 @Composable
 fun CatApiNavhost(
     navController: NavHostController = rememberNavController(),
 ) {
-    SharedTransitionLayout {
-        NavHost(
-            navController = navController,
-            startDestination = Screen.Home.route
-        ) {
-            homeNavigation(
-                onNavigateToAnimalDetail = { animalId ->
-                    navController.navigateToAnimalDetail(animalId = animalId)
-                }
-            )
+    NavHost(
+        navController = navController,
+        startDestination = Screen.Home.route
+    ) {
+        homeNavigation(
+            onNavigateToAnimalDetail = { animalId ->
+                navController.navigateToAnimalDetail(animalId = animalId)
+            }
+        )
 
-            animalDetailNavigation(
-                onNavigateUp = {
-                    navController.navigateUp()
-                }
-            )
-        }
+        animalDetailNavigation(
+            onNavigateUp = {
+                navController.navigateUp()
+            }
+        )
     }
 }
