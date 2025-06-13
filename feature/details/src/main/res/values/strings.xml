@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_fetching_animal_info">Algo sucedio... Intentalo mas tarde...</string>
+    <string name="btn_regresar">Regresar</string>
+    <string name="animal_temperament">Temperament</string>
+    <string name="animal_characteristics">Characteristics</string>
+    <string name="affection">Affection</string>
+    <string name="adaptability">Adaptability</string>
+    <string name="childFriendly">Friendly</string>
+    <string name="intelligence">Intelligence</string>
+    <string name="energy">Energy</string>
+    <string name="grooming">Grooming</string>
+    <string name="rare">Rare</string>
+</resources>

@@ -1,11 +1,13 @@
 package com.devtorres.details.nav
 
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.SavedStateHandle
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.devtorres.details.AnimalDetailScreen
+import com.devtorres.details.AnimalDetailsViewModel
 import com.devtorres.navigation.Screen
 
 const val ANIMAL_ARGS_ID = "animalId"
@@ -31,7 +33,9 @@ fun NavGraphBuilder.animalDetailNavigation(
         )
     ) { backStackEntry ->
         // inicializar viewmodel
+        val animalDetailViewModel : AnimalDetailsViewModel = hiltViewModel(backStackEntry)
         AnimalDetailScreen(
+            animalDetailViewModel = animalDetailViewModel,
             onNavigateUp = onNavigateUp
         )
     }

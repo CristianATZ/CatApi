@@ -1,5 +1,7 @@
 package com.devtorres.data.di
 
+import com.devtorres.data.respository.details.DetailsRepository
+import com.devtorres.data.respository.details.DetailsRepositoryImpl
 import com.devtorres.data.respository.home.HomeRepository
 import com.devtorres.data.respository.home.HomeRepositoryImpl
 import dagger.Binds
@@ -13,4 +15,7 @@ internal interface DataModule {
 
     @Binds
     fun bindsHomeRepository(homeRepositoryImpl: HomeRepositoryImpl): HomeRepository
+
+    @Binds
+    fun bindsDetailsRepository(detailsRepositoryImpl: DetailsRepositoryImpl): DetailsRepository
 }

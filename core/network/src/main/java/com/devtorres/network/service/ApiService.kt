@@ -1,8 +1,10 @@
 package com.devtorres.network.service
 
+import com.devtorres.network.model.AnimalInfoResponse
 import com.devtorres.network.model.AnimalResponse
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
@@ -21,10 +23,15 @@ interface ApiService {
     suspend fun fetchAnimalList(
         @Query("api_key") apiKey: String = "",
         @Query("page") page: Int = 0,
-        @Query("limit") limit: Int = 10,
+        @Query("limit") limit: Int = 15,
         @Query("has_breeds") hasBreeds: Boolean = true,
         @Query("breed_ids") breedIds: String = "",
         @Query("category_ids") categoryIds: String = ""
     ) : Response<List<AnimalResponse>>
+
+    @GET("images/{animalId}")
+    suspend fun fetchAnimalInfo(
+        @Path("animalId") animalId: String
+    ) : Response<AnimalInfoResponse>
 
 }
